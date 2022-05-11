@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="../scripts/index.js" defer></script>
+    <script src="../scripts/hover.js" defer></script>
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/item.css">
+    <link rel="stylesheet" href="../style/cart.css">
+    <title>Shop</title>
+</head>
+<body>
+    <div id="header">
+        <a href="#" onclick="changeState('shop')">Shop</a>
+        <a href="#" onclick="changeState('cart')">Shopping cart</a>
+    </div>
+
+    <div id="body">
+        <div id="shop">
+            <div class="item_container">
+                <div class="top">
+                    <img src="../images/article_1_front.jpg" id="img_art_1">
+                    <p>Air Jordan 1 Retro High University Blue</p>
+                    <div>
+                        <p class="price">545€</p>
+                    </div>
+                    
+                </div>
+                <div class="bottom">
+                    <div class="minus bt" onclick="changeItemQt(1, -1)">-</div>
+                    <div class="qt" id="qt_art_1">0</div>
+                    <div class="plus bt" onclick="changeItemQt(1, 1)">+</div>
+                </div>
+                <div class="add_to_cart bt" onclick="addToCart(1)">
+                    Ajouter au panier
+                </div>
+            </div>
+    
+            <div class="item_container">
+                <div class="top">
+                    <img src="../images/article_2_front.jpg" id="img_art_2">
+                    <p>Air Force 1 Low White Supreme</p>
+                    <div>
+                        <p class="price">250€</p>
+                    </div>
+                    
+                </div>
+                <div class="bottom">
+                    <div class="minus bt" onclick="changeItemQt(2, -1)">-</div>
+                    <div class="qt" id="qt_art_2">0</div>
+                    <div class="plus bt" onclick="changeItemQt(2, 1)">+</div>
+                </div>
+                <div class="add_to_cart bt" onclick="addToCart(2)">
+                    Ajouter au panier
+                </div>
+            </div>
+    
+            <div class="item_container">
+                <div class="top">
+                    <img src="../images/article_3_front.jpg" id="img_art_3">
+                    <p>Air Force 1 Low Metallic Chrome</p>
+                    <div>
+                        <p class="promo">250€</p>
+                        <p class="price new_price">200€</p>
+                    </div>
+                    
+                </div>
+                <div class="bottom">
+                    <div class="minus bt" onclick="changeItemQt(3, -1)">-</div>
+                    <div class="qt" id="qt_art_3">0</div>
+                    <div class="plus bt" onclick="changeItemQt(3, 1)">+</div>
+                </div>
+                <div class="add_to_cart bt" onclick="addToCart(3)">
+                    Ajouter au panier
+                </div>
+            </div>
+        </div>
+        
+        
+        <div id="cart" style="display: none;">
+            
+            <ul id="items_container">
+            
+            </ul>
+        </div>
+        <h1 id="total_price"></h1>
+    </div>
+    
+</body>
+</html>

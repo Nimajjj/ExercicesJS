@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style/master.css">
+    <link rel="stylesheet" href="../style/button.css">
+    <link rel="stylesheet" href="../style/score.css">
+    <script src="../scripts/index.js" defer></script>
+    <title>Quizz</title>
+</head>
+<body>
+    <h1>Quizz</h1>
+
+    <h2 id="question">Quelle est la date de naissance de Kheir-Eddine Mederreg ?</h2>
+
+    <ul id="answers_container">
+        <li class="button">Reponse 1</li>
+        <li class="button">Reponse 2</li>
+        <li class="button">Reponse 3</li>
+        <li class="button">Reponse 4</li>
+    </ul>
+
+    <ul id="score_container" style="display: none;">
+        <li><h2>Scoreboard</h2></li>
+        <li>
+            <input id="name" type="text" placeholder="Your name..." style="color: black;"> 
+            <div id="submit_button" onclick="submitScore()">Submit</div>
+        </li>
+        <li>
+            <p class="name">Ben :</p>
+            <p class="score">6000</p>
+        </li>
+        <li>
+            <p class="name">Kheir :</p>
+            <p class="score">10</p>
+        </li>
+        <li>
+            <p class="name">Laurie :</p>
+            <p class="score">-3</p>
+        </li>
+    </ul>
+    
+</body>
+</html>

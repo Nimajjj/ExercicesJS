@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style/master.css">
+    <script src="scripts/index.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <img id="slot_machine" src="images/slot_machine.jpg" alt="">
+    <div id="fruit_container">
+        <img id="fruit1" src="images/casino.png" alt="">
+        <img id="fruit2" src="images/cherry.png" alt="">
+        <img id="fruit3" src="images/cherry.png" alt="">
+    </div>
+    
+    <div id="ui">
+        <p id="result"></p>
+        <p id="tokens">Jetons : </p>
+        <div style="display: flex;">
+            <div class="button" id="play10" onclick="play(10)"> miser 10 jetons</div>
+            <div class="button" id="play50" onclick="play(50)"> miser 50 jetons</div>
+            <div class="button" id="play200" onclick="play(200)"> miser 200 jetons</div>
+        </div>
+        
+    </div>
+</body>
+</html>

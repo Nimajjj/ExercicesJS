@@ -1,0 +1,49 @@
+body {
+    background-color: #fff3eb;
+}
+
+p, div {
+    font-size: 32px;
+}
+
+.button {
+    padding: 1vh 2vw;
+    background-color: red;
+    color: white;
+    width: 12vw;
+    text-align: center;
+    border-radius: 999px;
+    transition: .1s ease;
+    margin-right: 1vw;
+    user-select: none;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+#ui {
+    margin-left: 2vw;
+    margin-top: -10vh;
+    width: 920px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#slot_machine {
+    height: 690px;
+}
+
+#fruit_container {
+    position: absolute;
+    top: 350px;
+    left: 370px;
+}
+
+#fruit_container img {
+    width: 48px;
+    height: 64px;
+    margin-right: 20px;
+}

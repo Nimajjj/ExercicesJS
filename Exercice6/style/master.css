@@ -1,0 +1,35 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+#header {
+    height: 5vh;
+    width: 100vw;
+    padding: 1vh 1vw;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+
+#header > a {
+    font-size: 32px;
+    margin-right: 1vw;
+}
+
+#header > #selected {
+    font-weight: bold;
+    color: red;
+}
+
+#body, #shop {
+    display: flex;
+}
+
+#shop > div {
+    margin: 2vh 2vw;
+}
