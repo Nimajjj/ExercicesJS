@@ -62,7 +62,7 @@ function initGrid(gridSize) {
 
 
 function initPath(gridSize) {
-    numberOfCells = gridSize + Math.floor(Math.random() * gridSize + gridSize/2);    // random number of cells to fill
+    numberOfCells = gridSize + Math.floor(Math.random() * gridSize + gridSize/2 - 3);    // random number of cells to fill
     let currentCell = new Vector2D(                                         // random start position
         Math.floor(Math.random() * gridSize),
         Math.floor(Math.random() * gridSize)
