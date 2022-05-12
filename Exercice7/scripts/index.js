@@ -25,6 +25,8 @@ let playing = false
 let currentLevel = 1
 let difficulty = 5
 
+let leaderboard = new Map();
+
 
 // GENERAL FUNCTIONS
 function drawRect(x, y) {
@@ -189,6 +191,7 @@ function mouseOn(evt) {
     } else if (state == 0 || state == 2) {
         document.querySelector("#result").innerHTML = "YOU LOOSE!"
         playing = false
+        timer.stop()
     }
 
     lastCell = mousePos
@@ -212,6 +215,7 @@ canvas.cvs.addEventListener(
         } else {
             currentLevel = 1
             document.querySelector("#result").innerHTML = "YOU LOOSE!"
+            timer.stop()
             resetStats()
             return
         }
@@ -229,17 +233,76 @@ canvas.cvs.onmousemove = function(evt) {
     }
 };
 
+// TIMER
+class Timer {
+    id;
+    time;   // time in milliseconds
+
+    constructor() {
+        this.id = 0;
+        this.time = 0;
+    }
+
+    start() {
+        this.id = window.setInterval(() => {
+            this.time += 1000;
+            document.querySelector("#timer").innerHTML = this.getTime();
+        }, 1000);
+    }
+
+    stop() {
+        clearInterval(this.id);
+    }
+
+    reset() {
+        this.id = 0;
+        this.time = 0;
+    }
+
+    getTime() {
+        let displayableTime = ""
+
+        let minutes = Math.floor(this.time / 60000)
+        let seconds = Math.floor((this.time % 60000) / 1000)
+
+        if (minutes < 10) { displayableTime += "0" }
+        displayableTime += minutes + ":"
+        if (seconds < 10) { displayableTime += "0" }
+        displayableTime += seconds
+
+        return displayableTime
+    }
+
+    formatTime(t) {
+        let displayableTime = ""
+
+        let minutes = Math.floor(t / 60000)
+        let seconds = Math.floor((t % 60000) / 1000)
+
+        if (minutes < 10) { displayableTime += "0" }
+        displayableTime += minutes + ":"
+        if (seconds < 10) { displayableTime += "0" }
+        displayableTime += seconds
+
+        return displayableTime
+    }
+}
+let timer = new Timer();
 
 
 // MAIN
 document.querySelector("#start").addEventListener("click", function() {
+    resetStats()
     reset()
     initGrid(difficulty)
+    timer.start()
 })
 
 document.querySelector("#reset").addEventListener("click", function() {
+    resetStats()
     reset()
     initGrid(difficulty)
+    timer.start()
 })
 
 function reset() {
@@ -251,22 +314,66 @@ function reset() {
     if (currentLevel > 5 && currentLevel < 10) { difficulty = 6 }
     else if (currentLevel > 10 ) { difficulty = 8 }
     document.querySelector("#result").innerHTML = ""
-    document.querySelector("#level").innerHTML = "Level : " + currentLevel + "/15"
+    document.querySelector("#level").innerHTML = "Level : " + (currentLevel-1) + "/15"
     if (difficulty == 5) { document.querySelector("#difficulty").innerHTML = "Difficulty : easy" }
     else if (difficulty == 6) { document.querySelector("#difficulty").innerHTML = "Difficulty : average" }
     else if (difficulty == 8) { document.querySelector("#difficulty").innerHTML = "Difficulty : hard" }
 }
 
+
 function testVictory() {
-    if (currentLevel == 15) { 
+    if (currentLevel-1 == 15) { 
+        timer.stop()
         document.querySelector("#result").innerHTML = "YOU WIN!"
         playing = false
         document.querySelector("#game").style.display = "none"
-        resetStats()
+        document.querySelector("#submit_score").style.display = "flex"
     }
 }
 
+function sendScore() {
+    leaderboard.set(document.querySelector("#name").value, timer.time)
+    resetStats()
+    reset()
+    displayLeaderBoard()
+}
+
+function displayLeaderBoard() {
+    const sortedScores = new Map([...leaderboard.entries()].sort((a, b) => a[1] - b[1]));
+    let i = 0;
+
+    document.querySelector("#score_ul").innerHTML = ""
+
+    sortedScores.forEach((value, key) => {
+        if (i >= 5) { return }
+
+        let playerName = document.createElement("p")
+        let newScore = document.createElement("p")
+        playerName.innerHTML = key + " :"
+        newScore.innerHTML = timer.formatTime(value)
+        let container = document.createElement("li")
+        container.appendChild(playerName)
+        container.appendChild(newScore)
+        document.querySelector("#score_ul").appendChild(container)
+
+        i++
+    })
+}
+
 function resetStats() {
+    timer.stop()
+    timer.reset()
     currentLevel = 1
     difficulty = 5
+    document.querySelector("#submit_score").style.display = "none"
+    document.querySelector("#timer").style.display = "00:00"
+    document.querySelector("#name").value = ""
+    canvas.cvs.width = 0
+    canvas.cvs.height = 0
 }
+
+
+leaderboard.set("Mathilde", 18790)
+leaderboard.set("BB", 113000)
+
+displayLeaderBoard()

@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>Exercice 7</h1>
-    <h3 id="level">Level : 1/15</h2>
+    <h3 id="level">Level : 0/15</h2>
     <h3 id="difficulty">Difficulty : easy</h3>
+    <h4 id="timer"> 00:00</h4>
 
     <div id="menu">
         <div class="bt" id="start">
@@ -25,6 +26,19 @@
     </div>
 
     <h1 id="result"></h1>
+    <div id="submit_score" style="display: none; margin-top: 2vh;">
+        <input type="text" name="name" id="name">
+        <div class="bt" id="submit_score_bt" onclick="sendScore()">
+            submit
+        </div>
+    </div>
+
+    <div id="leaderboard">
+        <h1>Leaderboard</h1>
+        <ul id="score_ul">
+
+        </ul>
+    </div>
 
 </body>
 </html>
