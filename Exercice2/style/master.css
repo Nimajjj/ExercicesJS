@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url("../images/bg-exo2.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+}
+
+#mask {
+  position: fixed;
+  z-index: 10;
+}
+
+#anims {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.fire {
+  background: url("../images/seq-a.png");
+  width:301px;
+  height:389px;
+  z-index: 10;
+}
+
+.ice {
+  background: url("../images/seq-b.png");
+  width:203px;
+  height:302px;
+  z-index: 10;
+}

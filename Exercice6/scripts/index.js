@@ -21,7 +21,7 @@ let cart = {
         img : "../images/article_3_front.jpg"
     }
 }
-//localStorage.setItem("cart", JSON.stringify(cart));
+localStorage.setItem("cart", JSON.stringify(cart));
 
 function changeItemQt(item, qt) {
     let element = document.querySelector("#qt_art_" + item);
@@ -80,6 +80,7 @@ function addToCart(item) {
     cart = c
     localStorage.setItem("cart", JSON.stringify(c));
     loadCart()
+    document.querySelector("#total_price").style.display = "none"
 }
 
 
@@ -99,6 +100,7 @@ function changeState(state) {
 let itemContainer = document.querySelector("#items_container")
 
 function loadCart() {
+  document.querySelector("#total_price").style.display = "block"
     let cart = JSON.parse(localStorage.getItem('cart'));
     itemContainer.innerHTML = "";
     createItem(cart.article1)
@@ -156,7 +158,7 @@ function createItem(item) {
     minusBt.classList.add("bt");
     minusBt.innerHTML = "-";
     minusBt.onclick = add.bind(null, item.id, -1);
-    
+
     let qt = document.createElement("div");
     qt.classList.add("qt");
     qt.id = "qt_art_" + item.id;

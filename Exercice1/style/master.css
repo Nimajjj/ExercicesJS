@@ -19,6 +19,9 @@ body {
     justify-content: space-around;
 }
 
+img {
+	user-select: none;
+}
 
 #carrousel {
     display: flex;
